@@ -3,7 +3,7 @@ import os
 
 
 def test_validate_users_schema():
-    api.validator_json_schemas('users_schema.json')
+    api.validator_all_json_schemas('users', 'users_schema.json')
 
 
 def test_get_users_list():
@@ -30,5 +30,3 @@ def test_get_single_unknown_user_info():
     status_code = response[1]
     assert response[0] == {}
     assert status_code == 404
-
-
