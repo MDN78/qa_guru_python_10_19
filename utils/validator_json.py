@@ -1,9 +1,11 @@
 import json
 import requests
 from jsonschema import validate
+
 from reqres_tests import resource
 
 url = 'https://reqres.in/api/'
+
 
 def validator_all_json_schemas(date, name, page=2):
     if date == 'users':

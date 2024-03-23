@@ -7,6 +7,7 @@ import requests
 def load_env():
     load_dotenv()
 
+
 @pytest.fixture
 def resource_list():
     resp = requests.get('https://reqres.in/api/unknown')
