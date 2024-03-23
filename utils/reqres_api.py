@@ -1,7 +1,4 @@
 import requests
-import json
-from jsonschema import validate
-from reqres_tests import resource
 
 
 class ReqresApi:
@@ -21,20 +18,6 @@ class ReqresApi:
         resp = requests.get(f'{self.url}users/{user_id}')
         status_code = resp.status_code
         return [resp.json(), status_code]
-
-    def validator_all_json_schemas(self, date, name, page=2):
-        if date == 'users':
-            my_param = {
-                "page": page
-            }
-            response = requests.get(f'{self.url}users', params=my_param)
-
-            schema = json.load(open(resource.path_log_file(file_name=name)))
-            validate(response.json(), schema)
-        elif date == 'resource':
-            response = requests.get(f'{self.url}unlnown')
-            schema = json.load(open(resource.path_log_file(file_name=name)))
-            validate(response.json(), schema)
 
     def get_resource_list(self):
         resp = requests.get(f'{self.url}unknown')
