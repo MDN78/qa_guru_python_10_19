@@ -3,7 +3,7 @@ from utils.validator_json import validator_all_json_schemas
 
 
 def test_validate_resource_schema():
-    validator_all_json_schemas('recource', 'resource_schema.json')
+    validator_all_json_schemas('recource', 'resource_scheme.json')
 
 
 def test_get_resource_list():

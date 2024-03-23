@@ -26,3 +26,11 @@ def validator_all_json_schemas(date, name, page=2):
         response = requests.post(f'{url}users', json=payload)
         schema = json.load(open(resource.path_log_file(file_name=name)))
         validate(response.json(), schema)
+    elif date == 'registration':
+        payload = {
+            'email': 'eve.holt@reqres.in',
+            'password': 'pistol'
+        }
+        response = requests.post(f'{url}register', json=payload)
+        schema = json.load(open(resource.path_log_file(file_name=name)))
+        validate(response.json(), schema)

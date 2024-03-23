@@ -4,8 +4,8 @@ import os
 from utils.validator_json import validator_all_json_schemas
 
 
-def test_validate_users_schema():
-    validator_all_json_schemas('users', 'users_schema.json')
+def test_validate_users_info_schema():
+    validator_all_json_schemas('users', 'users_scheme.json')
 
 
 def test_get_users_list():

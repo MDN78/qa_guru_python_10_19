@@ -3,8 +3,8 @@ from utils.validator_json import validator_all_json_schemas
 from reqres_tests.reqres_api import api
 
 
-def test_validate_resource_schema():
-    validator_all_json_schemas('create', 'create_new_user_schema.json')
+def test_validate_users_schema():
+    validator_all_json_schemas('create', 'create_new_user_scheme.json')
 
 
 def test_create_new_user():
