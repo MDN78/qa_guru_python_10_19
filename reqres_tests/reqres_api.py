@@ -48,7 +48,7 @@ class ReqresApi:
         status_code = resp.status_code
         return [resp.json(), status_code]
 
-    def delete_user(self, user_id=2):
+    def delete_user(self, user_id=2) -> list:
         resp = requests.delete(f'{self.url}users/{user_id}')
         status_code = resp.status_code
         status = f'{resp.text}deleted'
@@ -73,7 +73,7 @@ class ReqresApi:
         user_info = resp.json()
         return [user_info, status_code]
 
-    def login_user(self, email, password):
+    def login_user(self, email: str, password: str) -> list:
         payload = {
             'email': email,
             'password': password
