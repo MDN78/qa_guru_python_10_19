@@ -31,5 +31,15 @@ class ReqresApi:
         schema = json.load(open(resource.path_log_file(file_name=name)))
         validate(response.json(), schema)
 
+    def get_resource_list(self):
+        resp = requests.get(f'{self.url}unknown')
+        status_code = resp.status_code
+        return [resp.json(), status_code]
+
+    def get_resource_list_by_id(self, date):
+        resp = requests.get(f'{self.url}unknown/{date}')
+        status_code = resp.status_code
+        return [resp.json(), status_code]
+
 
 api = ReqresApi("https://reqres.in/api/")

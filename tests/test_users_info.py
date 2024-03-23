@@ -1,5 +1,9 @@
 from utils.reqres_api import api
-from tests.conftest import *
+import os
+
+
+def test_validate_users_schema():
+    api.validator_json_schemas('users_schema.json')
 
 
 def test_get_users_list():
@@ -10,7 +14,7 @@ def test_get_users_list():
     assert status_code == 200
 
 
-def test_get_single_user():
+def test_get_single_user_info():
     user_ids = os.getenv('USER_ID')
     response = api.get_single_user(user_ids)
     status_code = response[1]
@@ -20,5 +24,11 @@ def test_get_single_user():
     assert status_code == 200
 
 
-def test_validate_users_schema():
-    api.validator_json_schemas('users_schema.json')
+def test_get_single_unknown_user_info():
+    user_ids = os.getenv('UNKNOWN_USER_ID')
+    response = api.get_single_user(user_ids)
+    status_code = response[1]
+    assert response[0] == {}
+    assert status_code == 404
+
+
