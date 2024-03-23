@@ -29,5 +29,30 @@ class ReqresApi:
         status_code = resp.status_code
         return [resp.json(), status_code]
 
+    def create_new_user(self, first_name, last_name, job):
+        payload = {
+            "first_name": first_name,
+            "last_name": last_name,
+            "job": job
+        }
+        resp = requests.post(f'{self.url}users', json=payload)
+        status_code = resp.status_code
+        return [resp.json(), status_code]
+
+    def update_user_info(self, name, job):
+        payload = {
+            "name": name,
+            "job": job,
+        }
+        resp = requests.put(f'{self.url}users/2', json=payload)
+        status_code = resp.status_code
+        return [resp.json(), status_code]
+
+    def delete_user(self, user_id=2):
+        resp = requests.delete(f'{self.url}users/{user_id}')
+        status_code = resp.status_code
+        status = f'{resp.text}deleted'
+        return [status, status_code]
+
 
 api = ReqresApi("https://reqres.in/api/")
