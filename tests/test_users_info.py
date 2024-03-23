@@ -1,12 +1,24 @@
 from utils.reqres_api import api
-import requests
+from tests.conftest import *
+
 
 def test_get_users_list():
     user_page = '1'
-    users_list = api.get_users_list(user_page)
-    assert users_list['page'] == int(user_page)
+    response = api.get_users_list(user_page)
+    status_code = response[1]
+    assert response[0]['page'] == int(user_page)
+    assert status_code == 200
 
 
-def test_users():
-    response = requests.get('https://reqres.in/api/users?page=2')
-    print(response.text)
+def test_get_single_user():
+    user_ids = os.getenv('USER_ID')
+    response = api.get_single_user(user_ids)
+    status_code = response[1]
+    assert response[0]['data']["email"] == os.getenv('USER_EMAIL')
+    assert response[0]['data']['first_name'] == os.getenv('USER_FIRST_NAME')
+    assert response[0]['data']['last_name'] == os.getenv('USER_LAST_NAME')
+    assert status_code == 200
+
+
+def test_validate_users_schema():
+    api.validator_json_schemas('users_schema.json')
