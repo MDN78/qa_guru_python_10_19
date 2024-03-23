@@ -1,4 +1,4 @@
-from utils.reqres_api import api
+from reqres_tests.reqres_api import api
 from utils.validator_json import validator_all_json_schemas
 
 

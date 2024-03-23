@@ -1,6 +1,6 @@
 import os
 from utils.validator_json import validator_all_json_schemas
-from utils.reqres_api import api
+from reqres_tests.reqres_api import api
 
 
 def test_validate_resource_schema():
