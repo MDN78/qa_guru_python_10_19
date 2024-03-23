@@ -25,3 +25,13 @@ def test_unsuccessful_registration():
     status_code = user_info[1]
     assert status['error'] == "Missing password"
     assert status_code == 400
+
+def test_login_user():
+    email = os.getenv('USER_EMAIL')
+    password = os.getenv('USER_PASSWORD')
+    login_user_info = api.login_user(email, password)
+    status_code = login_user_info[1]
+    user_token = login_user_info[0]
+    assert status_code == 200
+    assert len(user_token) > 0
+

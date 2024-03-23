@@ -73,5 +73,15 @@ class ReqresApi:
         user_info = resp.json()
         return [user_info, status_code]
 
+    def login_user(self, email, password):
+        payload = {
+            'email': email,
+            'password': password
+        }
+        resp = requests.post(f'{self.url}login', json=payload)
+        status_code = resp.status_code
+        user_token = resp.json()['token']
+        return [user_token, status_code]
+
 
 api = ReqresApi("https://reqres.in/api/")
